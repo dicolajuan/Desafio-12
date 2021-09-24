@@ -36,10 +36,5 @@ io.on ('connection', (socket) => {
 });
 
 app.get('/', (req,res)=>{
-    if (objProductos.length) {
-        res.render('prueba', { ok: true, error: null, products: objProductos })
-    } else {
-        res.render('prueba', { ok: false, error: 'No hay products cargados', objProductos: [] })
-    }
-    // res.render('prueba', {products: objProductos} );
+    res.render('products', { products: objProductos })
 });

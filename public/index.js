@@ -3,7 +3,6 @@ const socket = io();
 socket.on('productCatalog', (data) => render(data));
 
 let render = (data) => {
-    console.log(data.products);
     if (data.products.length > 0) {
         let table =`
         <table>
@@ -34,6 +33,9 @@ function createProd(form) {
         price: parseFloat(document.getElementById('price').value),
         thumbnail: document.getElementById('thumbnail').value
     }
+    document.getElementById('title').value = "";
+    document.getElementById('price').value = "";
+    document.getElementById('thumbnail').value = "";
     socket.emit('newProduct', newProduct)
     return false;
 }
